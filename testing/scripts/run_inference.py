@@ -1,10 +1,18 @@
+import os
+import sys
+
+# Ensure project root is on PYTHONPATH for imports
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, os.pardir))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 import argparse
 import time
 
-from src.utils      import load_config, LABELS
-from src.audio      import get_block
-from src.preprocess import block_to_mel
-from src.inference  import InferenceEngine
+from src.utils import load_config, LABELS
+from src.audio import get_block
+from src.preprocessing import block_to_mel
+from src.inference import InferenceEngine
 
 def main():
     parser = argparse.ArgumentParser(description="Run real-time gesture inference")

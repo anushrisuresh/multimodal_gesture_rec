@@ -3,6 +3,17 @@ import tflite_runtime.interpreter as tflite
 
 class InferenceEngine:
     def __init__(self, model_path: str):
+        import os
+        import glob
+        if not os.path.isfile(model_path):
+            dirpath = os.path.dirname(model_path) or '.'
+            alt = os.path.join(dirpath, 'quantized_model_int8.tflite')
+            if os.path.isfile(alt):
+                model_path = alt
+            else:
+                candidates = glob.glob(os.path.join(dirpath, '*.tflite'))
+                if candidates:
+                    model_path = candidates[0]
         self.interpreter = tflite.Interpreter(model_path=model_path)
         self.interpreter.allocate_tensors()
         self.input_details = self.interpreter.get_input_details()

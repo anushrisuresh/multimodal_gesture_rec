@@ -1,9 +1,9 @@
 import numpy as np
 import pytest
 
-from src.preprocess import block_to_mel
-from src.utils      import load_config, LABELS
-from src.inference  import InferenceEngine
+from src.preprocessing import block_to_mel
+from src.utils import load_config, LABELS
+from src.inference import InferenceEngine
 
 @pytest.fixture
 def dummy_audio():
