@@ -1,0 +1,25 @@
+
+---
+# Audio capture
+sample_rate: 48000       # Hz
+block_duration: 1.92     # seconds
+
+# Mel-spectrogram
+n_fft: 1200              # ~25 ms @48 kHz
+hop_length: 480          # ~10 ms @48 kHz
+n_mels: 64
+fmax: 24000
+
+# Model
+model_path: "models/fusion_model.tflite"
+
+# Inference
+threshold: 0.6
+
+# Labels
+labels:
+  - power
+  - forward
+  - backward
+  - up
+  - down
