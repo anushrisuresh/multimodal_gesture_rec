@@ -35,10 +35,12 @@ class InferenceEngine:
             self.input_details[self.mic_idx]['index'],
             mel_block.astype(self.input_details[self.mic_idx]['dtype'])
         )
-        # set dummy ultrasound input
+        # set randomized ultrasound input for testing
+        us_input = np.ones_like(self.dummy_us)
+        # us_input = np.random.randn(*self.dummy_us.shape).astype(self.dummy_us.dtype)
         self.interpreter.set_tensor(
             self.input_details[self.us_idx]['index'],
-            self.dummy_us
+            us_input
         )
         self.interpreter.invoke()
         return self.interpreter.get_tensor(

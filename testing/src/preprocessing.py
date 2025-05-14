@@ -15,8 +15,14 @@ def block_to_mel(block: np.ndarray,
         hop_length=hop_length,
         n_mels=n_mels,
         fmax=fmax,
-        power=2.0
+        power=2.0,
+        center=True
     )
     S_db = librosa.power_to_db(S, ref=np.max)
-    # transpose to (T, n_mels), then add batch dim
-    return S_db.T[np.newaxis, ...]
+
+    mel = S_db.T[np.newaxis, ...]
+
+    n_frames = block.shape[0] // hop_length
+    mel = mel[:, :n_frames, :]
+    print(mel.shape)
+    return mel

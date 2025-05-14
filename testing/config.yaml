@@ -11,7 +11,7 @@ n_mels: 64
 fmax: 24000
 
 # Model
-model_path: "models/quantized_model_int8.tflite"
+model_path: "models/quantized_model_option2.tflite"
 
 # Inference
 threshold: 0.6
