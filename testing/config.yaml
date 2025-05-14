@@ -10,6 +10,9 @@ hop_length: 480          # ~10 ms @48 kHz
 n_mels: 64
 fmax: 24000
 
+# Input information
+real_input: 10 # number of samples per class
+
 # Model
 model_path: "models/quantized_model_option2.tflite"
 
